@@ -73,3 +73,23 @@ class TestLillyPad(TestCase):
         result = pad.within_reach(frog_circle)
         # assert
         assert result is False
+
+    def test_occupied_returns_true_when_lilly_pad_occupied(self):
+        # arrange
+        lilly_pad_centre = Point(1, 1)
+        pad = LillyPad(lilly_pad_centre)
+        pad.current_frog_id = 2
+        # act
+        result = pad.occupied()
+        # assert
+        assert result is True
+
+    def test_occupied_returns_false_when_lilly_pad_not_occupied(self):
+        # arrange
+        lilly_pad_centre = Point(1, 1)
+        pad = LillyPad(lilly_pad_centre)
+        pad.current_frog_id = None
+        # act
+        result = pad.occupied()
+        # assert
+        assert result is False
