@@ -6,6 +6,9 @@ from shapely.geometry.point import Point
 
 class Frog(object):
 
+    min_range = 2
+    max_range = 4
+
     def __init__(self, position: Point, max_jump, frog_id):
         self.position = position
         self.max_jump = max_jump
