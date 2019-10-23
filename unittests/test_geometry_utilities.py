@@ -1,36 +1,35 @@
-from geometry_utilities import GeoUtils
+from geometry_utilities import Circle
 
 from unittest import TestCase
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Point
 
 
-class TestGeoUtils(TestCase):
-    def test_circle_method_returns_polygon_around_central_point(self):
+class TestCircle(TestCase):
+    def test_contains_point_returns_true_when_point_in_circle(self):
         # arrange
-        geo_utils = GeoUtils()
-        centre_point = Point(2, 2)
-        radius = 1
+        centre = Point(3, 3)
+        circle = Circle(centre, 2)
+        point_in_circle = Point(2, 2)
         # act
-        circle_to_test = geo_utils.circle(centre_point, radius)
-        # assert
-        assert circle_to_test.centroid == centre_point
-
-    def test_point_in_polygon_returns_true_when_point_inside_polygon(self):
-        # arrange
-        geo_utils = GeoUtils()
-        poly = Polygon([(0, 0), (1, 0), (1, 1), (0, 1)])
-        point = Point(0.4, 0.4)
-        # act
-        result = geo_utils.point_in_polygon(point, poly)
+        result = circle.contains_point(point_in_circle)
         # assert
         assert result is True
 
-    def test_point_in_polygon_returns_false_when_point_inside_polygon(self):
+    def test_contains_point_returns_false_when_point_outside_circle(self):
         # arrange
-        geo_utils = GeoUtils()
-        poly = Polygon([(0, 0), (1, 0), (1, 1), (0, 1)])
-        point = Point(0.4, 1.4)
+        centre = Point(3, 3)
+        circle = Circle(centre, 2)
+        point_outside_circle = Point(0, 0)
         # act
-        result = geo_utils.point_in_polygon(point, poly)
+        result = circle.contains_point(point_outside_circle)
         # assert
         assert result is False
+
+    def test_contains_point_returns_true_when_point_on_boundary_of_circle(self):
+        centre = Point(3, 3)
+        circle = Circle(centre, 2)
+        point_outside_circle = Point(3, 1)
+        # act
+        result = circle.contains_point(point_outside_circle)
+        # assert
+        assert result is True

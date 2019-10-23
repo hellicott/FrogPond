@@ -1,11 +1,12 @@
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Point
 
 
-class GeoUtils(object):
+class Circle(object):
 
-    def circle(self, centre_point: Point, radius):
-        circle = centre_point.buffer(radius)
-        return circle
+    def __init__(self, centre_point: Point, radius):
+        self.centre_point = centre_point
+        self.radius = radius
 
-    def point_in_polygon(self, point: Point, poly: Polygon):
-        return poly.contains(point)
+    def contains_point(self, other_point):
+        distance = self.centre_point.distance(other_point)
+        return distance <= self.radius

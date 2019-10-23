@@ -1,5 +1,5 @@
 from unittest import TestCase
-from shapely.geometry import Point, MultiPoint
+from shapely.geometry import Point
 
 from lilly_pad import LillyPad
 
@@ -17,14 +17,22 @@ class TestLillyPad(TestCase):
         # assert
         assert min_rad < radius < max_rad
 
-    def test_calculate_polygon_returns_correct_size_polygon(self):
+    def test_lilly_pad_has_circle_attribute_of_expected_size(self):
         # arrange
         centre = Point(1, 1)
         max_rad = 5
         min_rad = 2
-        pad = LillyPad(centre, min_rad, max_rad)
         # act
-        poly = pad._create_polygon(centre, 3)
+        pad = LillyPad(centre, min_rad, max_rad)
         # assert
-        poly_point = MultiPoint(poly.exterior.coords)[0]
-        assert 2.9 < centre.distance(poly_point) < 3.1
+        assert 2 < pad.circle.radius < 5
+
+    def test_lilly_pad_has_circle_attribute_in_expected_position(self):
+        # arrange
+        centre = Point(1, 1)
+        max_rad = 5
+        min_rad = 2
+        # act
+        pad = LillyPad(centre, min_rad, max_rad)
+        # assert
+        assert pad.circle.centre_point == centre

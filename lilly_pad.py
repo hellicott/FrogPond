@@ -1,16 +1,15 @@
 import random
 
-from geometry_utilities import GeoUtils
+from geometry_utilities import Circle
 
 
 class LillyPad(object):
 
     def __init__(self, position, min_radius, max_radius):
-        pass
+        radius = self._choose_radius(min_radius, max_radius)
+        self.circle = Circle(position, radius)
 
-    def _choose_radius(self, min_radius, max_radius):
+    @staticmethod
+    def _choose_radius(min_radius, max_radius):
         return random.uniform(min_radius, max_radius)
 
-    def _create_polygon(self, position, radius):
-        geo_utils = GeoUtils()
-        return geo_utils.circle(position, radius)
