@@ -78,7 +78,7 @@ class TestLillyPad(TestCase):
         # arrange
         lilly_pad_centre = Point(1, 1)
         pad = LillyPad(lilly_pad_centre)
-        pad.current_frog_id = 2
+        pad.currently_occupied = True
         # act
         result = pad.occupied()
         # assert
@@ -88,8 +88,38 @@ class TestLillyPad(TestCase):
         # arrange
         lilly_pad_centre = Point(1, 1)
         pad = LillyPad(lilly_pad_centre)
-        pad.current_frog_id = None
+        pad.currently_occupied = False
         # act
         result = pad.occupied()
         # assert
         assert result is False
+
+    def test_visit_updates_the_visited_list(self):
+        # arrange
+        lilly_pad_centre = Point(1, 1)
+        pad = LillyPad(lilly_pad_centre)
+        frog_id = 2
+        # act
+        pad.visit(frog_id)
+        # assert
+        assert frog_id in pad.visited_frogs
+
+    def test_visit_updates_occupied_to_true(self):
+        # arrange
+        lilly_pad_centre = Point(1, 1)
+        pad = LillyPad(lilly_pad_centre)
+        frog_id = 2
+        # act
+        pad.visit(frog_id)
+
+        # assert
+        assert pad.currently_occupied is True
+
+    def test_leave_updates_occupied_to_false(self):
+        # arrange
+        lilly_pad_centre = Point(1, 1)
+        pad = LillyPad(lilly_pad_centre)
+        # act
+        pad.leave()
+        # assert
+        assert pad.currently_occupied is False

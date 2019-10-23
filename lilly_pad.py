@@ -9,9 +9,10 @@ class LillyPad(object):
     max_radius = 5
 
     def __init__(self, position):
-        radius = self._choose_radius()
-        self.circle = Circle(position, radius)
-        self.current_frog_id = None
+        self.radius = self._choose_radius()
+        self.circle = Circle(position, self.radius)
+        self.centre = position
+        self.currently_occupied = False
         self.visited_frogs = []
 
     def _choose_radius(self):
@@ -24,4 +25,12 @@ class LillyPad(object):
         return self.circle.intersects_circle(frog_circle)
 
     def occupied(self):
-        return self.current_frog_id is not None
+        return self.currently_occupied
+
+    def visit(self, frog_id):
+        self.visited_frogs.append(frog_id)
+        self.currently_occupied = True
+
+    def leave(self):
+        self.currently_occupied = False
+
