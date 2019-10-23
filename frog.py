@@ -13,10 +13,11 @@ class Frog(object):
     def _get_range(self):
         return Circle(self.position, self.max_jump)
 
-#
-#     def find_possible_lilly_pads(self, lilly_pad_list):
-#         possible_lilly_pads = []
-#         for lilly_pad in lilly_pad_list:
-#             if lilly_pad.circle.intersects_circle(self._get_range()):
-#                 possible_lilly_pads.append(lilly_pad)
-#         return possible_lilly_pads
+    def find_possible_lilly_pads(self, lilly_pad_list):
+        possible_lilly_pads = []
+        for lilly_pad in lilly_pad_list:
+            if not lilly_pad.occupied() \
+                    and not lilly_pad.visited_by(self.id) \
+                    and lilly_pad.within_reach(self._get_range()):
+                possible_lilly_pads.append(lilly_pad)
+        return possible_lilly_pads
