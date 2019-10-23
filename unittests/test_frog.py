@@ -2,6 +2,7 @@ from unittest import TestCase
 from shapely.geometry.point import Point
 
 from frog import Frog
+from lilly_pad import LillyPad
 
 
 class TestFrog(TestCase):
@@ -9,7 +10,7 @@ class TestFrog(TestCase):
         # arrange
         position = Point(2, 2)
         max_jump = 1
-        frog = Frog(position, max_jump)
+        frog = Frog(position, max_jump, 0)
         # act
         range_circle = frog._get_range()
         # assert
