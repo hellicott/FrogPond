@@ -52,3 +52,12 @@ class TestCircle(TestCase):
         result = circle1.intersects_circle(circle2)
         # assert
         assert result is False
+
+    def test_get_points_on_circle_returns_list_of_points(self):
+        # arrange
+        circle = Circle(Point(3, 3), 2)
+        # act
+        point_list = circle.get_points_on_circle()
+        # assert
+        assert type(point_list) == list \
+               and type(point_list[0][0]) == float

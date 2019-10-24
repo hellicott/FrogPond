@@ -15,3 +15,8 @@ class Circle(object):
         distance = self.centre_point.distance(other_circle.centre_point)
         max_distance = self.radius + other_circle.radius
         return distance <= max_distance
+
+    def get_points_on_circle(self):
+        circle_polygon = self.centre_point.buffer(self.radius)
+        circle_points = list(circle_polygon.exterior.coords)
+        return circle_points
