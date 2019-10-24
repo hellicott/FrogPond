@@ -26,3 +26,6 @@ class Pond(object):
 
     def get_frog_start_points(self):
         return self.circle.get_points_on_circle()
+
+    def lilly_pad_in_pond(self, pad_circle):
+        return self.circle.contains_circle(pad_circle)

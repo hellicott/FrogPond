@@ -61,15 +61,15 @@ class TestFrogPond(TestCase):
         # arrange
         fp = FrogPond()
         # act
-        frog = fp.create_frog(0)
+        frog = fp._create_frog(0)
         # assert
         assert type(frog) == Frog
 
-    def test_lilly_pad_returns_lilly_pad_type(self):
+    def test_create_lilly_pad_returns_lilly_pad_type(self):
         # arrange
         fp = FrogPond()
         # act
-        pad = fp.create_lilly_pad()
+        pad = fp._create_lilly_pad()
         # assert
         assert type(pad) == LillyPad
 

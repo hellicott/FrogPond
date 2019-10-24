@@ -60,4 +60,22 @@ class TestCircle(TestCase):
         point_list = circle.get_points_on_circle()
         # assert
         assert type(point_list) == list \
-               and type(point_list[0][0]) == float
+            and type(point_list[0][0]) == float
+
+    def test_contains_circle_returns_true_when_circle_contained(self):
+        # arrange
+        circle_outside = Circle(Point(5, 5), 5)
+        circle_inside = Circle(Point(7, 4), 1)
+        # act
+        result = circle_outside.contains_circle(circle_inside)
+        # assert
+        assert result is True
+
+    def test_contains_circle_returns_false_when_circle_not_contained(self):
+        # arrange
+        circle1 = Circle(Point(10, 10), 2)
+        circle2 = Circle(Point(3, 10), 2)
+        # act
+        result = circle1.contains_circle(circle2)
+        # assert
+        assert result is False
