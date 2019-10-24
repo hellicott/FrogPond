@@ -1,22 +1,25 @@
 from geometry_utilities import Circle
+from frog import Frog
+from lilly_pad import LillyPad
 
 from shapely.geometry.point import Point
 
 
 class Pond(object):
 
-    def __init__(self, radius):
-        self.circle = self.build_pond(radius)
+    radius = 10
+
+    def __init__(self):
+        self.circle = self.build_pond()
         self.frogs = []
         self.lilly_pads = []
 
-    @staticmethod
-    def build_pond(radius):
-        centre = Point(radius, radius)
-        return Circle(centre, radius)
+    def build_pond(self):
+        centre = Point(self.radius, self.radius)
+        return Circle(centre, self.radius)
 
-    def create_frog(self):
-        pass
+    def add_frog(self, frog: Frog):
+        self.frogs.append(frog)
 
-    def create_lilly_pad(self):
-        pass
+    def add_lilly_pad(self, pad: LillyPad):
+        self.lilly_pads.append(pad)
