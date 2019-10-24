@@ -44,7 +44,7 @@ class TestFrogPond(TestCase):
         # act
         fp._set_constraints()
         # assert
-        assert LillyPad.min_radius == 2
+        assert LillyPad.min_radius == min_percent
 
     def test_set_constraints_sets_lilly_pad_max_radius(self):
         # arrange
@@ -56,3 +56,18 @@ class TestFrogPond(TestCase):
         # assert
         assert LillyPad.max_radius == 10
 
+    def test_create_frog_returns_frog_type(self):
+        # arrange
+        fp = FrogPond()
+        # act
+        frog = fp.create_frog(0)
+        # assert
+        assert type(frog) == Frog
+
+    def test_lilly_pad_returns_lilly_pad_type(self):
+        # arrange
+        fp = FrogPond()
+        # act
+        pad = fp.create_lilly_pad()
+        # assert
+        assert type(pad) == LillyPad

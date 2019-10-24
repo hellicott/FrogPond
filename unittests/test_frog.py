@@ -9,18 +9,16 @@ class TestFrog(TestCase):
     def test_get_range_circle_returns_circle_of_correct_size(self):
         # arrange
         position = Point(2, 2)
-        max_jump = 1
-        frog = Frog(position, max_jump, 0)
+        frog = Frog(position, 0)
         # act
         range_circle = frog._get_range_circle()
         # assert
-        assert range_circle.radius == max_jump
+        assert frog.min_range < range_circle.radius < frog.max_range
 
     def test_find_possible_lilly_pads_returns_list_of_lilly_pads_when_some_are_available(self):
         # arrange
         position = Point(2, 2)
-        max_jump = 3
-        frog = Frog(position, max_jump, 0)
+        frog = Frog(position, 0)
         pad = LillyPad(Point(2, 4))
         # act
         possible_pads = frog._find_possible_lilly_pads([pad])
@@ -30,8 +28,7 @@ class TestFrog(TestCase):
     def test_find_possible_lilly_pads_returns_empty_list_when_none_are_available(self):
         # arrange
         position = Point(20, 20)
-        max_jump = 3
-        frog = Frog(position, max_jump, 0)
+        frog = Frog(position, 0)
         pad = LillyPad(Point(2, 4))
         # act
         possible_pads = frog._find_possible_lilly_pads([pad])
@@ -43,8 +40,7 @@ class TestFrog(TestCase):
         mock_pad = mock.create_autospec(LillyPad)
         mock_pad.centre = 2
         position = Point(2, 2)
-        max_jump = 3
-        frog = Frog(position, max_jump, 0)
+        frog = Frog(position, 0)
         # act
         frog._move_to_lilly_pad(mock_pad)
         # assert
@@ -55,8 +51,7 @@ class TestFrog(TestCase):
         mock_pad = mock.create_autospec(LillyPad)
         mock_pad.centre = 2
         position = Point(2, 2)
-        max_jump = 3
-        frog = Frog(position, max_jump, 0)
+        frog = Frog(position, 0)
         # act
         frog._move_to_lilly_pad(mock_pad)
         # assert
@@ -68,8 +63,7 @@ class TestFrog(TestCase):
         mock_dest_pad = mock.create_autospec(LillyPad)
         mock_dest_pad.centre = 2
         position = Point(2, 2)
-        max_jump = 3
-        frog = Frog(position, max_jump, 0)
+        frog = Frog(position, 0)
         frog.current_lilly_pad = mock_current_pad
         # act
         frog._move_to_lilly_pad(mock_dest_pad)
@@ -81,8 +75,7 @@ class TestFrog(TestCase):
         mock_pad = mock.create_autospec(LillyPad)
         mock_pad.centre = 2
         position = Point(2, 2)
-        max_jump = 3
-        frog = Frog(position, max_jump, 0)
+        frog = Frog(position, 0)
         # act
         frog._move_to_lilly_pad(mock_pad)
         # assert

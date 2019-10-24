@@ -1,7 +1,9 @@
-from frog import Frog
 from lilly_pad import LillyPad
+from frog import Frog
 from pond import Pond
 import config
+
+from shapely.geometry.point import Point
 
 
 class FrogPond(object):
@@ -19,3 +21,16 @@ class FrogPond(object):
         LillyPad.min_radius = 2/100 * config.pond_radius
         LillyPad.max_radius = config.lilly_pad_radius_max_percentage_of_pond_size/100 * config.pond_radius
 
+    def choose_frog_start_point(self):
+        return Point(0, 0)
+
+    def choose_lilly_pad_position(self):
+        return self.choose_frog_start_point()
+
+    def create_frog(self, num):
+        position = self.choose_frog_start_point()
+        return Frog(position, num)
+
+    def create_lilly_pad(self):
+        position = self.choose_lilly_pad_position()
+        return LillyPad(position)

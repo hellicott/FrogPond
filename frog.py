@@ -9,12 +9,15 @@ class Frog(object):
     min_range = 2
     max_range = 4
 
-    def __init__(self, position: Point, max_jump, frog_id):
+    def __init__(self, position: Point, frog_id):
         self.position = position
-        self.max_jump = max_jump
+        self.max_jump = self._choose_max_jump()
         self.lilly_pads_visited = []
         self.frog_id = frog_id
         self.current_lilly_pad = None
+
+    def _choose_max_jump(self):
+        return random.uniform(self.min_range, self.max_range)
 
     def _get_range_circle(self):
         return Circle(self.position, self.max_jump)
