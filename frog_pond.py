@@ -18,3 +18,4 @@ class FrogPond(object):
         # LillyPad
         LillyPad.min_radius = 2/100 * config.pond_radius
         LillyPad.max_radius = config.lilly_pad_radius_max_percentage_of_pond_size/100 * config.pond_radius
+
