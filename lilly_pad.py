@@ -8,15 +8,11 @@ class LillyPad(object):
     min_radius = 2
     max_radius = 5
 
-    def __init__(self, position):
-        self.radius = self._choose_radius()
-        self.circle = Circle(position, self.radius)
-        self.centre = position
+    def __init__(self, position, radius, centre_pad=False):
+        self.circle = Circle(position, radius)
+        self.centre_pad = centre_pad
         self.currently_occupied = False
         self.visited_frogs = []
-
-    def _choose_radius(self):
-        return random.uniform(self.min_radius, self.max_radius)
 
     def visited_by(self, frog_id):
         return frog_id in self.visited_frogs

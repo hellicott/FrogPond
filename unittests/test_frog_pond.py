@@ -1,4 +1,5 @@
 from unittest import TestCase
+from shapely.geometry.point import Point
 
 from frog_pond import FrogPond
 from lilly_pad import LillyPad
@@ -71,3 +72,11 @@ class TestFrogPond(TestCase):
         pad = fp.create_lilly_pad()
         # assert
         assert type(pad) == LillyPad
+
+    def test_choose_frog_start_point_returns_point(self):
+        # arrange
+        fp = FrogPond()
+        # act
+        point = fp._choose_frog_start_point()
+        # assert
+        assert type(point) == Point

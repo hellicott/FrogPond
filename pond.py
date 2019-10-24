@@ -23,3 +23,6 @@ class Pond(object):
 
     def add_lilly_pad(self, pad: LillyPad):
         self.lilly_pads.append(pad)
+
+    def get_frog_start_points(self):
+        return self.circle.get_points_on_circle()
