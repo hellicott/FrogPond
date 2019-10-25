@@ -3,6 +3,7 @@ from shapely.geometry.point import Point
 
 from frog import Frog
 from lilly_pad import LillyPad
+from geometry_utilities import Circle
 
 
 class TestFrog(TestCase):
@@ -39,7 +40,7 @@ class TestFrog(TestCase):
     def test_move_to_lilly_pad_calls_lilly_pad_visit_method(self):
         # arrange
         mock_pad = mock.create_autospec(LillyPad)
-        mock_pad.centre = 2
+        mock_pad.circle = Circle(Point(0, 0), 3)
         position = Point(2, 2)
         frog = Frog(position, 1, 0)
         # act
@@ -50,19 +51,19 @@ class TestFrog(TestCase):
     def test_move_to_lilly_pad_sets_frog_position_to_lilly_pad_position(self):
         # arrange
         mock_pad = mock.create_autospec(LillyPad)
-        mock_pad.centre = 2
+        mock_pad.circle = Circle(Point(0, 0), 3)
         position = Point(2, 2)
         frog = Frog(position, 1, 0)
         # act
         frog._move_to_lilly_pad(mock_pad)
         # assert
-        assert frog.position == 2
+        assert frog.position == Point(0, 0)
 
     def test_move_to_lilly_pad_calls_leave_on_current_lilly_pad(self):
         # arrange
         mock_current_pad = mock.create_autospec(LillyPad)
         mock_dest_pad = mock.create_autospec(LillyPad)
-        mock_dest_pad.centre = 2
+        mock_dest_pad.circle = Circle(Point(0, 0), 3)
         position = Point(2, 2)
         frog = Frog(position, 1, 0)
         frog.current_lilly_pad = mock_current_pad
@@ -74,7 +75,7 @@ class TestFrog(TestCase):
     def test_move_to_lilly_pad_updates_frog_current_lilly_pad(self):
         # arrange
         mock_pad = mock.create_autospec(LillyPad)
-        mock_pad.centre = 2
+        mock_pad.circle = Circle(Point(0, 0), 3)
         position = Point(2, 2)
         frog = Frog(position, 1, 0)
         # act

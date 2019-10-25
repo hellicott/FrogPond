@@ -17,7 +17,11 @@ class Frog(object):
         self.current_lilly_pad = None
 
     def get_range_circle(self):
-        return Circle(self.position, self.max_jump)
+        if self.current_lilly_pad is not None:
+            radius = self.max_jump + self.current_lilly_pad.circle.radius
+        else:
+            radius = self.max_jump
+        return Circle(self.position, radius)
 
     def _find_possible_lilly_pads(self, lilly_pad_list):
         possible_lilly_pads = []
