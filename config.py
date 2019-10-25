@@ -8,4 +8,4 @@ lilly_pad_radius_max_percentage_of_pond_size = 5  # must be larger than 2 (the m
 number_of_lilly_pads_on_pond = 10  # must be greater than 1
 
 # Pond parameters
-pond_radius = 20
+pond_radius = 30

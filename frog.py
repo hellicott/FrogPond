@@ -31,7 +31,7 @@ class Frog(object):
     def _move_to_lilly_pad(self, destination_lilly_pad):
         if self.current_lilly_pad is not None:
             self.current_lilly_pad.leave()
-        self.position = destination_lilly_pad.centre
+        self.position = destination_lilly_pad.circle.centre_point
         destination_lilly_pad.visit(self.frog_id)
         self.current_lilly_pad = destination_lilly_pad
 

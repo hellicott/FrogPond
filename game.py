@@ -14,7 +14,8 @@ class Game(object):
             print("*"*100)
             print("*" * 100)
             win = self.frog_round(self.frog_pond.frogs)
-        print("All frogs are out :(")
+        if self._all_frogs_out():
+            print("All frogs are out :(")
 
     def _all_frogs_out(self):
         for frog in self.frog_pond.frogs:
