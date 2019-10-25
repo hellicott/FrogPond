@@ -44,10 +44,10 @@ class FrogPond(object):
             x = random.uniform(min_x, max_x)
             y = random.uniform(min_y, max_y)
             pad = Circle(Point(x, y), pad_radius)
-            if self.pond.lilly_pad_in_pond(pad) and not self.is_overlapping_current_lilly_pads(pad):
+            if self.pond.lilly_pad_in_pond(pad) and not self._is_overlapping_current_lilly_pads(pad):
                 return Point(x, y)
 
-    def is_overlapping_current_lilly_pads(self, circle):
+    def _is_overlapping_current_lilly_pads(self, circle):
         for lilly_pad in self.lilly_pads:
             if self._lilly_pads_overlap(circle, lilly_pad):
                 return True
