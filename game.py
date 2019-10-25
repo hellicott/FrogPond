@@ -10,9 +10,12 @@ class Game(object):
         self.print_frogs()
         self.print_lilly_pads()
         win = False
+        round_num = 1
         while not self._all_frogs_out() and not win:
             print("*"*100)
+            print(f"Round {round_num}")
             print("*" * 100)
+            round_num += 1
             win = self.frog_round(self.frog_pond.frogs)
         if self._all_frogs_out():
             print("All frogs are out :(")
