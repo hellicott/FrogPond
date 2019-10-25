@@ -14,18 +14,11 @@ class TestPond(TestCase):
         # assert
         assert pond.circle.centre_point == Point(radius, radius)
 
-    def test_add_frog_adds_to_list_of_frogs(self):
+    def test_get_frog_start_coords_returns_list_of_coordinates(self):
         # arrange
         pond = Pond()
         # act
-        pond.add_frog("frog")
+        coord_list = pond.get_frog_start_coords()
         # assert
-        assert "frog" in pond.frogs
-
-    def test_add_lilly_pad_adds_to_list_of_lilly_pads(self):
-        # arrange
-        pond = Pond()
-        # act
-        pond.add_lilly_pad("lilly pad")
-        # assert
-        assert "lilly pad" in pond.lilly_pads
+        assert type(coord_list) == list \
+            and type(coord_list[0][0]) == float

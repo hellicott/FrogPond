@@ -24,7 +24,7 @@ class TestLillyPad(TestCase):
         # assert
         assert pad.circle.centre_point == centre
 
-    def test_visited_returns_true_when_frog_visited(self):
+    def test_visited_by_returns_true_when_frog_visited(self):
         # arrange
         centre = Point(1, 1)
         pad = LillyPad(centre, 2)
@@ -35,7 +35,7 @@ class TestLillyPad(TestCase):
         # assert
         assert result is True
 
-    def test_visited_returns_false_when_frog_not_visited(self):
+    def test_visited_by_returns_false_when_frog_not_visited(self):
         # arrange
         centre = Point(1, 1)
         pad = LillyPad(centre, 2)

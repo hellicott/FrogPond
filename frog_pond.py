@@ -32,7 +32,7 @@ class FrogPond(object):
         LillyPad.max_radius = config.lilly_pad_radius_max_percentage_of_pond_size/100 * config.pond_radius
 
     def _choose_frog_start_point(self):
-        point = random.choice(self.pond.get_frog_start_points())
+        point = random.choice(self.pond.get_frog_start_coords())
         return Point(point[0], point[1])
 
     def _choose_lilly_pad_position(self, pad_radius):
