@@ -79,3 +79,11 @@ class TestCircle(TestCase):
         result = circle1.contains_circle(circle2)
         # assert
         assert result is False
+
+    def test_get_bounds(self):
+        # arrange
+        circle = Circle(Point(3, 3), 1)
+        # act
+        bounds = circle.get_bounds()
+        # assert
+        assert bounds == (2, 2, 4, 4)

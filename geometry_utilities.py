@@ -25,3 +25,10 @@ class Circle(object):
         bound_radius = self.radius - other_circle.radius
         bound_circle = Circle(self.centre_point, bound_radius)
         return bound_circle.contains_point(other_circle.centre_point)
+
+    def get_bounds(self):
+        min_x = self.centre_point.x - self.radius
+        min_y = self.centre_point.y - self.radius
+        max_x = self.centre_point.x + self.radius
+        max_y = self.centre_point.y + self.radius
+        return min_x, min_y, max_x, max_y
