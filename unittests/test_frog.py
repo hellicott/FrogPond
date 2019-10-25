@@ -12,7 +12,7 @@ class TestFrog(TestCase):
         max_jump = 3
         frog = Frog(position, 3, 0)
         # act
-        range_circle = frog._get_range_circle()
+        range_circle = frog.get_range_circle()
         # assert
         assert range_circle.radius == max_jump
 
