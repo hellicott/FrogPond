@@ -36,10 +36,7 @@ class FrogPond(object):
         return Point(point[0], point[1])
 
     def _choose_lilly_pad_position(self, pad_radius):
-        max_x = self.pond.circle.centre_point.x + self.pond.radius
-        max_y = self.pond.circle.centre_point.y + self.pond.radius
-        min_x = self.pond.circle.centre_point.x - self.pond.radius
-        min_y = self.pond.circle.centre_point.y - self.pond.radius
+        min_x, min_y, max_x, max_y = self.pond.circle.get_bounds()
         while True:
             x = random.uniform(min_x, max_x)
             y = random.uniform(min_y, max_y)
@@ -84,3 +81,12 @@ class FrogPond(object):
         self.lilly_pads.append(self._create_centre_lilly_pad())
         for num in range(config.number_of_lilly_pads_on_pond - 1):
             self.lilly_pads.append(self._create_lilly_pad())
+
+    def get_frog_circles(self):
+        return [frog.get_range_circle() for frog in self.frogs]
+
+    def get_pond_circle(self):
+        return self.pond.circle
+
+    def get_lilly_pad_circles(self):
+        return [pad.circle for pad in self.lilly_pads]
