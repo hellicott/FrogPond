@@ -27,5 +27,5 @@ class Visualise(object):
     def _draw_board(self):
         self._draw_circle(self.frog_pond.get_pond_circle(), "blue")
         self._draw_circles(self.frog_pond.get_lilly_pad_circles(), "limegreen")
-        self._draw_circle(self.frog_pond.get_centre_lilly_pad_circle(), "lawngreen")
+        self._draw_circle(self.frog_pond.get_centre_lilly_pad_circle(), "greenyellow")
         self._draw_circles(self.frog_pond.get_frog_circles(), "darkgreen")
