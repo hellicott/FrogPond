@@ -88,5 +88,8 @@ class FrogPond(object):
     def get_pond_circle(self):
         return self.pond.circle
 
+    def get_centre_lilly_pad_circle(self):
+        return self.lilly_pads[0].circle
+
     def get_lilly_pad_circles(self):
         return [pad.circle for pad in self.lilly_pads]

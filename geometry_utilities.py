@@ -26,9 +26,9 @@ class Circle(object):
         bound_circle = Circle(self.centre_point, bound_radius)
         return bound_circle.contains_point(other_circle.centre_point)
 
-    def get_bounds(self):
-        min_x = self.centre_point.x - self.radius
-        min_y = self.centre_point.y - self.radius
-        max_x = self.centre_point.x + self.radius
-        max_y = self.centre_point.y + self.radius
+    def get_bounds(self, xshift=0, yshift=0):
+        min_x = self.centre_point.x - self.radius + xshift
+        min_y = self.centre_point.y - self.radius + yshift
+        max_x = self.centre_point.x + self.radius + xshift
+        max_y = self.centre_point.y + self.radius + yshift
         return min_x, min_y, max_x, max_y
