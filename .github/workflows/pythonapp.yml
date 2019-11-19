@@ -13,10 +13,6 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
     - name: Lint with flake8
       run: |
         pip install flake8
@@ -29,4 +25,4 @@ jobs:
         python -m unittest unittests/test_frog.py
     - name: Run Test Coverage
       run: |
-        coverage run -m
+        coverage run unittest unittests/test_frog.py
