@@ -26,7 +26,7 @@ class Frog(object):
     def _find_possible_lilly_pads(self, lilly_pad_list):
         possible_lilly_pads = []
         for lilly_pad in lilly_pad_list:
-            if not lilly_pad.occupied() \
+            if not lilly_pad.occupied \
                     and not lilly_pad.visited_by(self.frog_id) \
                     and lilly_pad.within_reach(self.get_range_circle()):
                 possible_lilly_pads.append(lilly_pad)
