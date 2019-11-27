@@ -1,11 +1,12 @@
 from frog_pond import FrogPond
 from visualise import Visualise
+from config import Config
 
 
 class Game(object):
 
-    def __init__(self):
-        self.frog_pond = FrogPond()
+    def __init__(self, config):
+        self.frog_pond = FrogPond(config)
         self.vis = Visualise(self.frog_pond)
 
     def play(self):
@@ -56,7 +57,8 @@ class Game(object):
 
 
 def main():
-    game = Game()
+    config = Config()
+    game = Game(config)
     game.play()
 
 

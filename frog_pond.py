@@ -2,7 +2,6 @@ from geometry_utilities import Circle
 from lilly_pad import LillyPad
 from frog import Frog
 from pond import Pond
-import config
 
 from shapely.geometry.point import Point
 import random
@@ -10,7 +9,8 @@ import random
 
 class FrogPond(object):
 
-    def __init__(self):
+    def __init__(self, config):
+        self.config = config
         self._set_constraints()
         self.pond = Pond()
         self.lilly_pads = []
@@ -18,18 +18,17 @@ class FrogPond(object):
         self.create_all_frogs()
         self.create_all_lilly_pads()
 
-    @staticmethod
-    def _set_constraints():
+    def _set_constraints(self):
         # Pond
-        Pond.radius = config.pond_radius
+        Pond.radius = self.config.pond_radius
 
         # Frog
-        Frog.min_range = config.frog_min_jump_distance
-        Frog.max_range = config.frog_max_jump_distance
+        Frog.min_range = self.config.frog_min_jump_distance
+        Frog.max_range = self.config.frog_max_jump_distance
 
         # LillyPad
-        LillyPad.min_radius = 2/100 * config.pond_radius
-        LillyPad.max_radius = config.lilly_pad_radius_max_percentage_of_pond_size/100 * config.pond_radius
+        LillyPad.min_radius = 2/100 * self.config.pond_radius
+        LillyPad.max_radius = self.config.lilly_pad_radius_max_percentage_of_pond_size/100 * self.config.pond_radius
 
     def _choose_frog_start_point(self):
         point = random.choice(self.pond.get_frog_start_coords())
@@ -74,12 +73,12 @@ class FrogPond(object):
         return LillyPad(position, radius, centre_pad=True)
 
     def create_all_frogs(self):
-        for num in range(config.number_of_frogs_in_game):
+        for num in range(self.config.number_of_frogs_in_game):
             self.frogs.append(self._create_frog(num))
 
     def create_all_lilly_pads(self):
         self.lilly_pads.append(self._create_centre_lilly_pad())
-        for num in range(config.number_of_lilly_pads_on_pond - 1):
+        for num in range(self.config.number_of_lilly_pads_on_pond - 1):
             self.lilly_pads.append(self._create_lilly_pad())
 
     def get_frog_circles(self):

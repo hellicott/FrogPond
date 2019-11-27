@@ -37,6 +37,17 @@ class TestFrog(TestCase):
         # assert
         assert len(possible_pads) == 0
 
+    def test_find_possible_pads_returns_no_pads_if_nearby_pad_occupied(self):
+        # arrange
+        position = Point(2, 2)
+        frog = Frog(position, 5, 0)
+        pad = LillyPad(Point(2, 4), 1)
+        pad.currently_occupied = True
+        # act
+        possible_pads = frog._find_possible_lilly_pads([pad])
+        # assert
+        assert len(possible_pads) == 0
+
     def test_move_to_lilly_pad_calls_lilly_pad_visit_method(self):
         # arrange
         mock_pad = mock.create_autospec(LillyPad)
@@ -82,3 +93,15 @@ class TestFrog(TestCase):
         frog._move_to_lilly_pad(mock_pad)
         # assert
         assert frog.current_lilly_pad == mock_pad
+
+    def test_find_centre_lilly_pad_returns_lilly_pad_where_centre_is_true(self):
+        # arrange
+        frog = Frog(Point(2, 2), 3, 0)
+        pad1 = mock.create_autospec(LillyPad)
+        pad1.centre_pad = False
+        pad2 = mock.create_autospec(LillyPad)
+        pad2.centre_pad = True
+        # act
+        centre_pad = frog._find_centre_lilly_pad([pad1, pad2])
+        # assert
+        assert centre_pad == pad2
