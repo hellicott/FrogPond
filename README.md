@@ -22,3 +22,18 @@ Each frog tries to jump to a lilly pad which is:
 If there are no possible lilly pads to jump to the frog is out
 
 This continues until either the frog lands on the centre lilly pad or all frogs are out
+
+## Tests and Code Coverage
+#### Tests
+To run the unittests on command line run the following command from the FrogPond directory:
+```
+>python -m unittest discover -s unittests -p "test_*.py"
+```
+#### Code coverage
+Ensure you have coverage.py installed
+
+To view the code coverage of the tests run the following command from the FrogPond directory:
+```
+>coverage run -m unittest discover -s unittests -p "test_*.py"
+```
+Then to view the results use `>coverage report` or `>coverage html`
