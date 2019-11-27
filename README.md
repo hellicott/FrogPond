@@ -31,6 +31,7 @@ system to stakeholders. Throughout your development you should ensure you keep y
 Project Manager and Product Owner engaged. There will be drop in sessions every other
 to week which allow you to share your progress and ask questions. In between you will be able to ask 
 questions on the teams channels.
+
 ---
 
 You are expected to manage this project using engineering best practices as if it 
