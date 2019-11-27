@@ -97,7 +97,9 @@ Frog
     - So can land on one edge and start the next jump from the opposite edge
   - Can jump in a random order, but the same order every turn 
     - (e.g. 1, 4, 2, 3 – 1, 4, 2, 3 – 1, 4, 2, 3…) 
+
 ---
+
 **Stretch goal** 
 - Visualize the output of running the frog pond 
 
