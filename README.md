@@ -22,6 +22,8 @@ requirements from your Product Owner. Then individually design and write your so
 should work together with the other trainees to gather a set of requirements from 
 your Product Owner. Then work with a trainee engineer to build a test strategy and 
 ensure there are clear acceptance criteria.
+
+
 ---
 
 Engineers and Testers will work together to deliver this critical Frogs in a Pond 

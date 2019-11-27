@@ -7,7 +7,7 @@ class Config:
 
     # Lilly pad parameters
     lilly_pad_radius_max_percentage_of_pond_size = 10  # FLOAT must be larger than 2 (the min %)
-    number_of_lilly_pads_on_pond = 100  # INT must be greater than 1
+    number_of_lilly_pads_on_pond = 50  # INT must be greater than 1
 
     # Pond parameters
     pond_radius = 200  # FLOAT must be greater than 0
